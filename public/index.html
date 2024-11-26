@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialEyes</title>
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h3 {
+            margin-top: 2rem;
+            color: #333;
+        }
+
+        h5 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #userNameForm {
+            display: flex;
+            width: 30%;
+            margin-top: 20px;
+        }
+
+        /* Chat container */
+        #chat {
+            width: 90%;
+            max-width: 600px;
+            height: 400px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+
+        /* Message bubbles */
+        .message {
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            word-wrap: break-word;
+            width:fit-content;
+        }
+
+        .ownMsg {
+            align-self: flex-end;
+            width: fit-content;
+            color: white;
+            background-color: lightblue;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .otherMsg {
+            color: black;
+            background-color: #f1f1f1;
+            text-align: left;
+            width: fit-content;
+            align-self: flex-start;
+        }
+
+        .sender{
+            font-weight: bold;               
+            color: #007bff;                   
+            padding: 2px 6px;                           
+            font-size: 1.1rem;               
+            margin-right: 5px;              
+            display: inline-block; 
+        }
+
+        /* Send message form */
+        #sendMsg {
+            display: flex;
+            justify-content: space-between;
+            width:30%;
+            margin-top: 10px;
+        }
+
+        #sendMsg input {
+            flex-grow: 1;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            #userNameForm{
+                width:80%;
+            }
+
+            #chat {
+                width: 100%;
+                height: 300px;
+            }
+
+            #sendMsg {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #sendMsg input {
+                margin-bottom: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h3 style="color:#007bff;">SocialEyes</h3>
+    <form id="userNameForm">
+        <input type="text" id="username" placeholder="Enter your unique username here"/>
+        <button type="submit">Register</button>
+    </form>
+    <div id="welcome">
+
+    </div>
+    <div id="chat" style="display: none;">
+
+    </div>
+    <div id="sendMsg" style="display: none; ">
+    <input type="text" id="message" placeholder="Start Typing..."/>
+    <button type="button" id="send">Send</button>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
